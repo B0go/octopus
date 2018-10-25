@@ -26,8 +26,8 @@ type Config struct {
 	Projects []Project `yaml:"projects"`
 }
 
-//Load loads the configuratin file at {UserHome}/.octopus/config.yml
-func Load(usrRetriever system.UserRetriever, fsReader system.FileSystemReader, ymlManipuler format.YmlManipuler) (*Config, error) {
+//Load loads the configuratin file at {UserHome}/.octopus/config.yaml
+func Load(usrRetriever system.UserRetriever, fsReader system.FileSystemReader, yamlManipuler format.YamlManipuler) (*Config, error) {
 	config := Config{}
 
 	usr, err := usrRetriever.Current()
@@ -35,15 +35,15 @@ func Load(usrRetriever system.UserRetriever, fsReader system.FileSystemReader, y
 		return nil, err
 	}
 
-	path := fmt.Sprintf("%s/.octopus/config.yml", usr.HomeDir)
+	path := fmt.Sprintf("%s/.octopus/config.yaml", usr.HomeDir)
 
 	if _, err := fsReader.FileStatus(path); fsReader.IsNotExist(err) {
 		log.WithField("path", path).
-			Errorf("Octopus is not configured. config.yml not found!")
+			Errorf("Octopus is not configured. config.yaml not found!")
 		return nil, err
 	}
 
-	err = ymlManipuler.ReadYml(&config, path)
+	err = yamlManipuler.ReadYaml(&config, path)
 	if err != nil {
 		return nil, err
 	}
