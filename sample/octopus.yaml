@@ -1,0 +1,10 @@
+project: myproject
+database: 
+  name: myproject
+envVars:
+  - name: DATABASE_PASSWORD
+    value: supersecure
+  - name: DATABASE_URL
+    value: postgresql:/localhost:5432/myproject
+  - name: DATABASE_USER
+    value: postgres

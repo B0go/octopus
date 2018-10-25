@@ -47,7 +47,7 @@ type Descriptor struct {
 	Database     *Database     `yaml:"database"`
 }
 
-//InstallAllProjects installs all projects configured in the config.yml
+//InstallAllProjects installs all projects configured in the config.yaml
 func InstallAllProjects() error {
 	log.Warn("\033[1mALL PROJECTS INSTALLATION\033[0m")
 
@@ -123,7 +123,7 @@ func install(project config.Project) error {
 
 	cloneProject(project, projectPath)
 
-	descriptorPath := fmt.Sprintf("%s/octopus.yml", projectPath)
+	descriptorPath := fmt.Sprintf("%s/octopus.yaml", projectPath)
 
 	if _, err := os.Stat(descriptorPath); os.IsNotExist(err) {
 		return err
@@ -135,9 +135,9 @@ func install(project config.Project) error {
 
 	descriptor := Descriptor{}
 
-	ymlManipuler := format.DefaultYmlManipuler{}
+	yamlManipuler := format.DefaultYamlManipuler{}
 
-	err = ymlManipuler.ReadYml(&descriptor, descriptorPath)
+	err = yamlManipuler.ReadYaml(&descriptor, descriptorPath)
 	if err != nil {
 		return err
 	}
@@ -206,6 +206,6 @@ func createRequestedDatabase(database *Database) {
 func loadConfig() (*config.Config, error) {
 	usrRetriever := system.OSUserRetriever{}
 	fsReader := system.OSFileSystemReader{}
-	ymlManipuler := format.DefaultYmlManipuler{}
-	return config.Load(usrRetriever, fsReader, ymlManipuler)
+	yamlManipuler := format.DefaultYamlManipuler{}
+	return config.Load(usrRetriever, fsReader, yamlManipuler)
 }

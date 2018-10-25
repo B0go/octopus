@@ -1,4 +1,4 @@
-# .goreleaser.yml
+# .goreleaser.yaml
 # Build customization
 builds:
   - main: main.go

@@ -6,23 +6,23 @@ import (
 	"github.com/B0go/octopus/external/format"
 )
 
-//PrintConfiguredProjects prints the configured projects in the current config.yml
+//PrintConfiguredProjects prints the configured projects in the current config.yaml
 func PrintConfiguredProjects() error {
 	config, err := loadConfig()
 	if err != nil && !os.IsNotExist(err) {
 		return err
 	}
 
-	ymlManipuler := format.DefaultYmlManipuler{}
+	yamlManipuler := format.DefaultYamlManipuler{}
 
 	if len(config.Projects) > 0 {
-		return ymlManipuler.PrintAsYml(config)
+		return yamlManipuler.PrintAsYaml(config)
 	}
 
 	return nil
 }
 
-//PrintConfiguredTeams prints the configured teams in the current config.yml
+//PrintConfiguredTeams prints the configured teams in the current config.yaml
 func PrintConfiguredTeams() error {
 	config, err := loadConfig()
 	if err != nil {
@@ -39,9 +39,9 @@ func PrintConfiguredTeams() error {
 		Teams []string
 	}{eliminateDuplicates(teams)}
 
-	ymlManipuler := format.DefaultYmlManipuler{}
+	yamlManipuler := format.DefaultYamlManipuler{}
 
-	return ymlManipuler.PrintAsYml(teamsStruct)
+	return yamlManipuler.PrintAsYaml(teamsStruct)
 }
 
 func eliminateDuplicates(slice []string) []string {
