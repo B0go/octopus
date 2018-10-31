@@ -50,7 +50,7 @@ GLOBAL OPTIONS:
 
 ## Usage
 
-Octopus manages the projects configured at the config.yaml file located at `~/.octopus/config.yaml`. You must create one.
+Octopus manages projects configured at the config.yaml file located at `~/.octopus/config.yaml`. You must create one.
 
 ### Functionality
 
