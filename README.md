@@ -8,7 +8,7 @@ Manages git projects locally.
 
 Download the [latest](https://github.com/B0go/octopus/releases/latest) version compatible with your OS
 
-Unpack the contents anywhere and execute the install.sh script:
+Unpack the contents and execute the install.sh script:
 
 ```sh
 ~/blah
