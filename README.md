@@ -101,3 +101,5 @@ octopus run myproject
 ```sh
 octopus run myproject --branch=mybranch
 ```
+
+Feel free to open a pull request and contribute! Help is always apreciated :)
